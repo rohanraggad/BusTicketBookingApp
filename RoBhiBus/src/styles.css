@@ -1,1 +1,102 @@
-/* You can add global styles to this file, and also import other style files */
+/* Base styles */
+body {
+    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    color: #333;
+  }
+  
+  .brand-text {
+    font-weight: bold;
+    color: #0077b6;
+    font-size: 1.6rem;
+  }
+  
+  .nav-link {
+    color: #333 !important;
+    font-weight: 500;
+  }
+  
+  .nav-link:hover {
+    color: #0077b6 !important;
+  }
+  
+  /* Hero section */
+  .hero-section-main {
+    min-height: 100vh;
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1478059299873-f047d8c5fe1a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+    background-size: cover;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-blend-mode: lighten;
+    backdrop-filter: blur(5px);
+  }
+  
+  .hero-section-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Alpha gradient */
+    z-index: -1;
+  }
+
+  .hero-section-result {
+    min-height: 100vh;
+    position: relative;
+    background: url('https://plus.unsplash.com/premium_photo-1661963542752-9a8a1d72fb28?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+    background-size: cover;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-blend-mode: lighten;
+    backdrop-filter: blur(5px);
+  }
+  
+  .hero-section-result::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Alpha gradient */
+    z-index: -1;
+  }
+  
+  .booking-form {
+    background-color: rgba(255, 255, 255, 0.1);
+    max-width: 900px;
+    z-index: 1; /* Ensures the form stays on top of the background */
+  }
+  
+  /* Inputs */
+  input[type="text"],
+  input[type="date"] {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  input:focus {
+    border-color: #0077b6;
+    box-shadow: 0 0 5px rgba(0, 119, 182, 0.3);
+  }
+  
+  /* Button */
+  .gradient-button {
+    background: linear-gradient(90deg, #00b4d8, #90e0ef);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+  
+  .gradient-button:hover {
+    background: linear-gradient(90deg, #0096c7, #48cae4);
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 119, 182, 0.4);
+  }
+  
