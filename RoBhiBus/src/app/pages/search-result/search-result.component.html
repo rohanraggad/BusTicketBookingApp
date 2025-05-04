@@ -1,0 +1,113 @@
+<!-- Hero Section -->
+<section class="hero-section-result align-items-center"> 
+    <div class="overlay"></div>
+    <!-- Gradient Overlay -->
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb4">
+            <h1 class="display-5 fw-bold text-white">Available Buses</h1>
+            <div class=" d-flex  gap-3">
+                <button class="btn btn-primary">
+                    <i class="fa fa-filter me-1"></i>Filter
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fa fa-sort me-1"></i>Sort
+                </button>
+            </div>
+        <p class="lead text-white mb-4">
+            
+        </p>
+        </div>
+      
+        <div class="row" >
+            @for (schedules of busSchedules; track $index) {
+                <div class="col-12">
+                    <div class="card mb-4 text-white" style="background: rgba(0,0,0,0.4);">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-3">
+                                    <h5 class="card-title">
+                                        <i class="fa fa-bus me-2"></i>{{schedules.busName}} 
+                                    </h5><i class="fa fa-user me-2"></i><small class="small-5">{{schedules.vendorName}}</small>
+                                    <p class="mb-0">
+                                        <i class="fa fa-bed me-1"></i> AC Sleeper
+                                    </p>
+                                    <div class="mt-2">
+                                        <span class="badge bg-success">
+                                            <i class="fa fa-star me-1"></i>4.6
+                                        </span>
+                                        <span class="badge bg-info ms-1">
+                                            <i class="fa fa-random me-1"></i>Fast
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <p class="mb-0">Departure</p>
+                                    <h6 class="mb-0">
+                                        <i class="fa fa-clock-o me-1"></i>{{schedules.departureTime | date:"hh:mm a"}}
+                                    </h6>
+                                </div>
+                                <div class="col-md-2">
+                                    <p class="mb-0">Duration</p>
+                                    <h6 class="mb-0">
+                                        <i class="fa fa-clock-o me-1"></i>{{getDuration(schedules.departureTime,schedules.arrivalTime)}}
+                                    </h6>
+                                </div>
+                                <div class="col-md-2">
+                                    <p class="mb-0">Arrival</p>
+                                    <h6 class="mb-0">
+                                        <i class="fa fa-clock-o me-1"></i>{{schedules.arrivalTime | date:"hh:mm a"}}
+                                    </h6>
+                                </div>
+                                <div class="col-md-2">
+                                    <p class="mb-0">Price</p>
+                                    <h6 class="mb-0">
+                                        <i class="fa fa-money me-1"></i>{{schedules.price}}
+                                    </h6>
+                                    <small class="text-success">
+                                        <i class="fa fa-usd me-1"></i>Best Price
+                                    </small>
+                                </div>
+                                <div class="col-md-1">
+                                        <button type="button" class="btn btn-success">Book Now</button>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+             }
+        </div>
+    
+    </div>
+    <!-- <h5 class="card-title display-6">{{schedules.busName}}</h5>
+                          <p><strong> {{schedules.vendorName}}</strong></p>
+                          <p><strong>Schedule Date:</strong> {{schedules.departureTime | date:"dd-MMM-yyyy"}}</p> -->
+                          <!-- <p><strong>Departure Time:</strong> {{schedules.departureTime | date:"dd-MMM-yyy hh:mm a"}}</p>
+                          <p><strong>Arrival Time:</strong> {{schedules.arrivalTime | date:"dd-MMM-yyy hh:mm a"}}</p>
+                          <p><strong>Price:</strong> {{schedules.price}}</p>
+                          <a href="#" class="btn btn-primary">Book Now</a>  -->
+
+      <!-- <section id="results" class="container my-5 py-5 d-none">
+        <h2 class="text-center mb-4 text-white">Available Buses</h2>
+        <div id="bus-results" class="row"> -->
+            <!-- Bus results will be inserted here -->
+             <!-- @for (schedules of busSchedules; track $index) {
+                <div class="card mb-4">
+                    <div class="card-body">
+                      <h5 class="card-title">{{schedules.vendorName}}</h5>
+                      <p><strong>Time:</strong> {{schedules.departureTime}}</p>
+                      <p><strong>Price:</strong> {{schedules.price}}</p>
+                      <a href="#" class="btn btn-primary">Book Now</a>
+                    </div>
+                  </div>
+             } -->
+        <!-- </div>
+    </section> -->
+
+
+    
+        
+
+
+    
+   
+</section>

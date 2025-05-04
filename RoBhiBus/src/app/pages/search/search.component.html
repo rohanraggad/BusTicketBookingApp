@@ -1,0 +1,51 @@
+<!-- Hero Section -->
+<section class="hero-section-main d-flex align-items-center"> 
+  <div class="overlay"></div>
+  <!-- Gradient Overlay -->
+  <div class="container text-center">
+    
+    <h1 class="display-5 fw-bold text-white">Plan Your Bus Journey</h1>
+    <p class="lead text-white mb-4">
+      Explore new destinations with comfort and ease.
+    </p>
+  
+
+  <!-- Booking Card -->
+  <div class="booking-form p-4 rounded-4 shadow-lg mx-auto">
+    <form id="searchForm" class="row g-3 align-items-end">
+      <div class="col-md-4">
+        <label class="form-label text-white">From</label>
+        <select class="form-select form-control" id="from-location" [(ngModel)]="searchObj.fromLocationId" name="fromLocationId">
+            <option value="From" selected>From</option>
+            @for (location of locationList; track $index) {
+                <option [value]="location.locationId">{{location.locationName}}</option>
+            }
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label text-white">To</label>
+        <select class="form-select form-control" id="to-location" [(ngModel)]="searchObj.toLocationId" name="toLocation">
+            <option value="To" selected>To</option>
+            @for (location of locationList; track $index) {
+                <option [value]="location.locationId">{{location.locationName}}</option>
+            }
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label text-white" >Date</label>
+        <input
+          type="date"
+          class="form-control "
+          id="travel-date"
+          [(ngModel)]="searchObj.date"
+          name="travelDate"
+        />
+      </div>
+    </form>
+    <div class="col-12 d-grid mt-3">
+      <button type="button" class="btn btn-primary btn-lg gradient-button" id="search-btn" (click)="searchBus()">
+        Search Buses
+      </button>
+    </div>
+</div>
+
