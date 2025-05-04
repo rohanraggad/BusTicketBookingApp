@@ -9,9 +9,11 @@
                 <button class="btn btn-primary">
                     <i class="fa fa-filter me-1"></i>Filter
                 </button>
-                <button class="btn btn-primary">
-                    <i class="fa fa-sort me-1"></i>Sort
-                </button>
+                <select class="ms-2" id="sort" name="sort" (change)="sortChange($event)">
+                    <option value="departure-asc">Departure: Earliest First</option>
+                    <option value="departure-desc">Departure: Late First</option>
+                    <option value="duration">Duration: Fastest Bus</option>
+                </select>
             </div>
         <p class="lead text-white mb-4">
             
