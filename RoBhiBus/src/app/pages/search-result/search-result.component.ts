@@ -31,6 +31,7 @@ export class SearchResultComponent implements OnInit{
       console.log(this.searchObj.fromLocationId)
       debugger  
       this.busSchedules = res
+      this.sortBuses('departure-asc')
       }
       )
   }
@@ -45,5 +46,41 @@ export class SearchResultComponent implements OnInit{
     const minutes = diffMinutes % 60
 
     return `${hours}h ${minutes}m`
+  }
+
+  getDurationInMinutes(departureTime: string, arrivalTime:string){
+    const dep = new Date(departureTime)
+    const arr = new Date(arrivalTime)
+
+    const diffMs = arr.getTime() - dep.getTime()
+    return Math.floor(diffMs / 60000)
+  }
+
+  sortChange(event:Event){
+    const selectElement = event.target as HTMLSelectElement
+    const order = selectElement.value
+    this.sortBuses(order)
+  }
+
+  sortBuses(order:string){
+    switch (order){
+      case 'departure-asc':
+        this.busSchedules.sort((a,b)=> 
+        new Date(a.departureTime).getTime() - new Date(b.departureTime).getTime()
+      )
+      break
+
+      case 'departure-desc':
+        this.busSchedules.sort((a,b)=> 
+          new Date(b.departureTime).getTime() - new Date(a.departureTime).getTime()
+        )
+      break
+
+      case 'duration':
+        this.busSchedules.sort((a,b)=>
+        this.getDurationInMinutes(a.departureTime,a.arrivalTime) - this.getDurationInMinutes(b.departureTime,b.arrivalTime)
+      )
+      break
+    }
   }
 }
