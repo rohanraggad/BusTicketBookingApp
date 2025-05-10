@@ -13,6 +13,7 @@
                     <option value="departure-asc">Departure: Earliest First</option>
                     <option value="departure-desc">Departure: Late First</option>
                     <option value="duration">Duration: Fastest Bus</option>
+                    <option value="price-asc">Price: Cheapest Bus First</option>
                 </select>
             </div>
         <p class="lead text-white mb-4">
@@ -69,8 +70,10 @@
                                         <i class="fa fa-usd me-1"></i>Best Price
                                     </small>
                                 </div>
+                                <!-- In search component,we navigated to search-result component using .ts file by navigate function provided by Router -->
+                                 <!-- Now we will navigate to book seats from HTML using RouterLink. This is another way of navigating -->
                                 <div class="col-md-1">
-                                        <button type="button" class="btn btn-success">Book Now</button>
+                                        <button class="btn btn-success" [routerLink]="'/book-ticket/'+schedules.scheduleId">Book Now</button>
                                 </div>
                             </div>
                         </div>

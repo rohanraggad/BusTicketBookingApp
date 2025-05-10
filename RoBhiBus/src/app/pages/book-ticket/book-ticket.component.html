@@ -1,1 +1,213 @@
-<p>book-ticket works!</p>
+<!-- <section class="hero-section-book align-items-center"> 
+    <div class="overlay"></div> -->
+    <!-- Gradient Overlay -->
+    <!-- <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb4">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="card" style="background: rgba(0,0,0,0.6);">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center text-white">
+                                    <div>
+                                        <h5 class="card-title mb-1 text-start">{{busSchedule.busName}}</h5>
+                                        <p class="mb-0 ">
+                                             🗓️{{getDayofDate(busSchedule.departureTime)}}, {{busSchedule.departureTime | date:"dd-MMM-yyyy"}}
+                                            <span class="mx-2">•</span>
+                                            🕒 {{busSchedule.departureTime | date:"hh:mma"}} → {{busSchedule.arrivalTime | date:"hh:mma"}}
+                                        </p>
+                                    </div>
+                                    <div class="text-end">
+                                        <h6 class="mb-1">{{fromLocation}} → {{toLocation}}</h6>
+                                        <p class="mb-0">Duration: {{getDuration(busSchedule.departureTime,busSchedule.arrivalTime)}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- Seat Layout -->
+                     <!-- <div class="col-lg-8">
+                        <div class="card text-white" style="background: rgba(0,0,0,0.6);">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-4" >
+                                    <h5 class="card-title mb-0">Select Seats</h5>
+                                    <div class="seat-legend">
+                                        <span class="me-1">⬜ Available</span>
+                                        <span class="me-1">⬛Booked</span>
+                                        <span class="me-1">🟦Selected</span>
+                                    </div>
+                                </div> -->
+
+                                <!-- Driver-Area -->
+                            <!-- </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+</section> -->
+
+
+
+
+
+<!-- Trial and error code -->
+<section class="hero-section-book">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card" style="background: rgba(0,0,0,0.6);">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center text-white">
+                            <div>
+                                <h5 class="card-title mb-1 text-start">{{busSchedule.busName}}</h5>
+                                <p class="mb-0 ">
+                                     🗓️{{getDayofDate(busSchedule.departureTime)}}, {{busSchedule.departureTime | date:"dd-MMM-yyyy"}}
+                                    <span class="mx-2">•</span>
+                                    🕒 {{busSchedule.departureTime | date:"hh:mma"}} → {{busSchedule.arrivalTime | date:"hh:mma"}}
+                                </p>
+                            </div>
+                            <div class="text-end">
+                                <h6 class="mb-1">{{fromLocation}} → {{toLocation}}</h6>
+                                <p class="mb-0">Duration: {{getDuration(busSchedule.departureTime,busSchedule.arrivalTime)}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            </div>
+
+
+      <div class="row gx-5">
+        <!-- Seat Layout -->
+        <!-- <div class="col-md-8 mb-4">
+          <div class="card text-white" style="background: rgba(0,0,0,0.4);">
+            <div class="card-body">
+              <h4 class="mb-4"><i class="fa fa-chair me-2"></i>Select Your Seats</h4>
+              <div class="mt-3 mb-2">
+                <small class="me-3"><span class="legend-box bg-light"></span> Available</small>
+                <small class="me-3"><span class="legend-box bg-success"></span> Selected</small>
+                <small><span class="legend-box bg-secondary"></span> Booked</small>
+              </div>    
+              <div class="seat-layout d-flex flex-wrap gap-2">
+                @for (seat of seats;track $index) {
+                    <button
+                      class="seat-btn btn"
+                      [ngClass]="{
+                        'btn-outline-light': seat.status === 'available',
+                        'btn-success': seat.status === 'selected',
+                        'btn-secondary disabled': seat.status === 'booked'
+                      }"
+                      (click)="toggleSeat(seat)"
+                    >
+                      {{seat.label}}
+                    </button>
+                  }
+              </div>
+             
+            </div>
+          </div>
+        </div> -->
+        
+        <!-- Seat Layout -->
+<div class="col-md-8 mb-4">
+    <div class="card text-white" style="background: rgba(0,0,0,0.4);">
+      <div class="card-body text-center">
+        <h1 class="mb-4"><i class="fa fa-chair me-2"></i>Select Your Seats</h1>
+        <div class="mt-3 mb-2">
+          <small class="me-3"><span class="legend-box bg-light"></span> Available</small>
+          <small class="me-3"><span class="legend-box bg-success"></span> Selected</small>
+          <small><span class="legend-box bg-secondary"></span> Booked</small>
+        </div>
+  
+        <!-- Driver cabin -->
+        <div class="driver-cabin text-center mb-3 text-light">
+            <div style="font-size: 2rem;">✇</div>
+            <div>Driver Cabin</div>
+          </div>
+  
+        <div class="seat-layout-bus">
+          <div class="seat-row" *ngFor="let row of seatRows">
+            <div class="seat-side">
+              <button *ngFor="let seat of row.left" class="seat-btn btn"
+                [ngClass]="getSeatClass(seat)"
+                (click)="onSelectSeat(seat)"
+                [disabled]="seat.status === 'booked'">  
+                {{ seat.label }}
+              </button>
+            </div>
+            <div class="aisle"></div>
+            <div class="seat-side">
+              <button *ngFor="let seat of row.right" class="seat-btn btn"
+                [ngClass]="getSeatClass(seat)"
+                (click)="onSelectSeat(seat)"
+                [disabled]="seat.status === 'booked'">
+                {{ seat.label }}
+              </button>
+            </div>
+          </div>
+        </div>
+       
+    </div>
+    </div>
+  </div>
+  
+        <!-- Fare & Summary -->
+        <div class="col-md-4">
+          <div class="card text-white" style="background: rgba(0,0,0,0.4);">
+            <div class="card-body">
+              <h4><i class="fa fa-money me-2 text-success"></i>Booking Summary</h4>
+              <hr class="border-light"/>
+              <div class="mb-3" id="selectedSeatsList">
+                <div>
+                    @for(items of selectedSeatsArray;track $index){
+                        <span class="badge bg-primary me-2 mb-2">{{items.seatNo}}</span>
+                    }
+                </div>
+              </div>
+              <p><strong>Base Fare:</strong> ₹{{baseFare}}</p>
+              <p><strong>Seats Selected:</strong> {{selectedSeatsArray.length}}</p>
+              <p><strong>Total Fare:</strong> ₹{{baseFare * selectedSeatsArray.length}}</p>
+
+              
+                
+                    @for(items of selectedSeatsArray;track $index){
+                        <div class="p-2 mb-2 border rounded-2 border-primary" style="background: rgba(255,255,255,0.1);">
+                        <div class="row">
+                            <p class="text-center">Passenger {{$index+1}} details:</p>
+                            <div class="col-12 mb-1 text-center">
+                                <input type="text" class="bg-light text-dark  text-center" disabled [value]="'Seat no: '+items.seatNo" style="font-weight: bolder;">
+                            </div>
+                            <div class="col-12 mb-1">
+                                <label for="" class="mx-2">Name:</label>
+                                <input type="text" class="form-control" placeholder="Enter passenger's name" [(ngModel)]="items.passengerName">
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label for="" class="mx-2">Age:</label>
+                                <input type="number" class="form-control" placeholder="Enter passenger's age" [(ngModel)]="items.age">
+                            </div>
+                            <div class="col-12">
+                                <label for="" class="mx-2">Gender:</label>
+                                <input type="radio" value="Male" [name]="'gender'+$index" [(ngModel)]="items.gender"> Male
+                                <input type="radio" class="ms-2" value="Female" [name]="'gender'+$index" [(ngModel)]="items.gender"> Female
+                            </div>
+                        </div>
+                    </div>
+                      }    
+                  
+             
+              
+              
+              <button class="btn btn-success mt-3 w-100" type="button" (click)="bookTickets()">
+                Proceed to Pay <i class="fa fa-arrow-right ms-2"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
