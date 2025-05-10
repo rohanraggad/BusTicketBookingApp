@@ -1,12 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Search } from '../../model/model';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-search-result',
-  imports: [DatePipe],
+  imports: [DatePipe,RouterLink],
   templateUrl: './search-result.component.html',
   styleUrl: './search-result.component.css'
 })
@@ -79,6 +79,12 @@ export class SearchResultComponent implements OnInit{
       case 'duration':
         this.busSchedules.sort((a,b)=>
         this.getDurationInMinutes(a.departureTime,a.arrivalTime) - this.getDurationInMinutes(b.departureTime,b.arrivalTime)
+      )
+      break
+
+      case 'price-asc':
+        this.busSchedules.sort((a,b)=>
+        a.price - b.price
       )
       break
     }

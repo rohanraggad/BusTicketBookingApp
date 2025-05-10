@@ -65,6 +65,28 @@ body {
     background: rgba(0, 0, 0, 0.6); /* Alpha gradient */
     z-index: -1;
   }
+
+  .hero-section-book {
+    min-height: 100vh;
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1732616311328-2e2a429a96a9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dhttps://images.unsplash.com/photo-1638538610703-79a6fce11baa?q=80&w=1936&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+    background-size: cover;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-blend-mode: lighten;
+    backdrop-filter: blur(5px);
+  }
+  
+  .hero-section-book::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Alpha gradient */
+    z-index: -1;
+  }
   
   .booking-form {
     background-color: rgba(255, 255, 255, 0.1);
@@ -100,3 +122,100 @@ body {
     box-shadow: 0 4px 12px rgba(0, 119, 182, 0.4);
   }
   
+  .seat-layout {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 10px;
+  }
+  
+  .seat-btn {
+    /* width: 60px;
+    height: 50px;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: transform 0.2s ease;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500; */
+    font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 8px 0;
+  width: 60px;
+  height: 50px;
+  transition: all 0.2s ease;
+    
+  }
+  
+  .seat-btn:hover:not(.disabled) {
+    transform: scale(1.1);
+  }
+  
+  .legend-box {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    margin-right: 5px;
+  }
+  
+  .seat-layout-bus {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .seat-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
+  
+
+  .seat-space {
+    width: 50px;
+  }
+ 
+
+  .seat-side {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .aisle {
+    width: 50px;
+  }
+  
+  /* .driver-cabin {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    border-radius: 8px;
+  } */
+  
+  .driver-cabin {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+  }
+
+  h4, h1, h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  }
+
