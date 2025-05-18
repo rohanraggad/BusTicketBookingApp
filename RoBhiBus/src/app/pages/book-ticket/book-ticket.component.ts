@@ -1,7 +1,7 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Booking, BusBookingPassenger } from '../../model/model';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ export class BookTicketComponent implements OnInit{
   busSchedule: any
   scheduleId:string = ""
   http = inject(HttpClient)
+  router = inject(Router)
   activatedRoute = inject(ActivatedRoute)
   fromLocation : string = ""
   toLocation : string = ""
@@ -139,8 +140,29 @@ export class BookTicketComponent implements OnInit{
     // Navigate or handle payment logic
     this.bookTicketObj.busBookingPassengers = this.selectedSeatsArray
     this.http.post("https://api.freeprojectapi.com/api/BusBooking/PostBusBooking",this.bookTicketObj).subscribe((res:any)=>{
-      alert("Tickets Booked")
+      // alert("Tickets Booked")
    })
+   console.log("Before Navigate")
+   console.log('Navigating to download-ticket with:', {
+    selectedSeats: this.selectedSeatsArray,
+    from: this.fromLocation,
+    to: this.toLocation,
+    scheduleId: this.scheduleId
+  });
+   this.router.navigate(['download-ticket'], {
+     state: {
+       selectedSeats: this.selectedSeatsArray,
+       from: this.fromLocation,
+       to: this.toLocation,
+       departure: this.busSchedule.departureTime,
+       arrival: this.busSchedule.arrivalTime,
+       baseFare : this.baseFare
+     }
+   });
+console.log("After Navigate")
+
+
+
   }
 
   getSeatClass(seat: any): any {

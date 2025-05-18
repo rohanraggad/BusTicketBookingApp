@@ -1,0 +1,40 @@
+<app-celebration></app-celebration>
+
+  
+  <div *ngIf="ticketData.length > 0" id="ticket" class="ticket-container">
+    <div class="ticket">
+      <div class="ticket-header">
+        <h2>🚌 Bus Ticket</h2>
+        <div class="route">
+          <span><strong>From:</strong> {{ from }}</span>
+          <span><strong>To:</strong> {{ to }}</span>
+        </div>
+        <div class="time-info">
+          <span><strong>Departure:</strong> {{ getDayofDate(departure) }}, {{ departure | date: 'dd-MMM-yyyy' }}</span>
+          <span>{{ departure | date: 'hh:mma' }}</span>
+        </div>
+        <div class="time-info">
+          <span><strong>Arrival:</strong> {{ getDayofDate(arrival) }}, {{ arrival | date: 'dd-MMM-yyyy' }}</span>
+          <span>{{ arrival | date: 'hh:mma' }}</span>
+        </div>
+      </div>
+  
+      <div class="ticket-body">
+        <div *ngFor="let ticket of ticketData" class="passenger-info">
+          <div class="passenger-header">
+            🎟️ Passenger
+          </div>
+          <p><strong>Name:</strong> {{ ticket.passengerName }}</p>
+          <p><strong>Seat No:</strong> {{ ticket.seatNo }}</p>
+          <p><strong>Gender:</strong> {{ ticket.gender }}</p>
+          <p><strong>Age:</strong> {{ ticket.age }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<div class="text-center mt-3 mb-5">
+  <button (click)="downloadTicket()" class="btn btn-primary text-center">Download Ticket</button>
+</div>
+  
+  

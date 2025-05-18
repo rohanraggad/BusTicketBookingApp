@@ -3,6 +3,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { SearchResultComponent } from './pages/search-result/search-result.component';
 import { BookTicketComponent } from './pages/book-ticket/book-ticket.component';
 import { MyBookingsComponent } from './pages/my-bookings/my-bookings.component';
+import { DownloadTicketComponent } from './pages/download-ticket/download-ticket.component';
 
 export const routes: Routes = [
     {
@@ -25,5 +26,9 @@ export const routes: Routes = [
     {
         path: "my-booking",
         component: MyBookingsComponent
+    },
+    {
+        path: "download-ticket",
+        component: DownloadTicketComponent
     }
 ];
