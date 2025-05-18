@@ -219,3 +219,114 @@ body {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   }
 
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    pointer-events: none;
+  }
+  
+  .background-blur {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(4px);  
+    /* background: rgba(0, 0,0, 0.4); */
+    z-index: 1;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+
+  .confirmation-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Above canvas and blur */
+    background-color: white;
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    pointer-events: auto;
+    animation: fadeInScale 0.3s ease-in-out;
+    height: auto;
+  }
+  
+  .confirmation-modal h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.8rem;
+    color: #2e7d32;
+  }
+  
+  .confirmation-modal p {
+    font-size: 1rem;
+    color: #444;
+  }
+  
+  /* Optional fade-in animation */
+  @keyframes fadeInScale {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  .ticket-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  .ticket {
+    width: 90%;
+    max-width: 600px;
+    background: #fdfdfd;
+    border: 2px dashed #333;
+    border-radius: 12px;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(135deg, #fff 60%, #f8f8f8 100%);
+    position: relative;
+  }
+  
+  .ticket-header {
+    border-bottom: 2px dashed #ccc;
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .route {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    margin: 8px 0;
+  }
+  
+  .time-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    color: #555;
+  }
+  
+  .ticket-body .passenger-info {
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-top: 1px dashed #bbb;
+  }
+  
+  .passenger-header {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 15px;
+  }
+  
