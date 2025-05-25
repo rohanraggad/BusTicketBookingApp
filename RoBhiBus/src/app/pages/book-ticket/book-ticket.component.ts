@@ -3,8 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Booking, BusBookingPassenger } from '../../model/model';
+import { AuthService, Booking, BusBookingPassenger } from '../../model/model';
 import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-book-ticket',
@@ -31,7 +33,10 @@ export class BookTicketComponent implements OnInit{
   alreadyBookedSeats: number[] = []
 
 
-  constructor(){
+  constructor(
+    private authService: AuthService,
+    private dialog: MatDialog
+  ){
     this.activatedRoute.params.subscribe((res:any)=>{
         
         this.scheduleId = res.scheduleId
@@ -133,9 +138,33 @@ export class BookTicketComponent implements OnInit{
   }
 
   bookTickets(): void {
+    if(!this.authService.isLoggedIn()){
+      const dialogRef = this.dialog.open(LoginComponent,{
+        disableClose: true
+      });
+
+      dialogRef.afterClosed().subscribe((result: boolean) => {
+        if (result) {
+          // Login successful, stay on page
+          alert('You are now logged in. Please click Proceed to Pay again.');
+        }
+      });
+
+      return;
+    }
+
+    sessionStorage.setItem('proceededToPay', 'true');
+
     if (this.selectedSeatsArray.length === 0) {
       alert('Please select at least one seat before proceeding.');
       return;
+    }else{
+      for(let i = 0;i<this.selectedSeatsArray.length;i++){
+        if(this.selectedSeatsArray[i].passengerName=="" || this.selectedSeatsArray[i].age==0 || this.selectedSeatsArray[i].gender==""){
+          alert("Please provide necessary details")
+          return
+        }
+      }
     }
     // Navigate or handle payment logic
     this.bookTicketObj.busBookingPassengers = this.selectedSeatsArray

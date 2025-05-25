@@ -35,7 +35,7 @@ export class DownloadTicketComponent implements OnInit {
       console.warn('No ticket data found in navigation state');
     }
 
-    console.log(this.ticketData)
+    sessionStorage.removeItem('proceededToPay');
   }
 
   getDayofDate(timestamp: string){

@@ -4,6 +4,7 @@ import { SearchResultComponent } from './pages/search-result/search-result.compo
 import { BookTicketComponent } from './pages/book-ticket/book-ticket.component';
 import { MyBookingsComponent } from './pages/my-bookings/my-bookings.component';
 import { DownloadTicketComponent } from './pages/download-ticket/download-ticket.component';
+import { TicketAccessGuard } from './model/model';
 
 export const routes: Routes = [
     {
@@ -21,7 +22,7 @@ export const routes: Routes = [
     },
     {
         path: "book-ticket/:scheduleId",
-        component: BookTicketComponent
+        component: BookTicketComponent 
     },
     {
         path: "my-booking",
@@ -29,6 +30,7 @@ export const routes: Routes = [
     },
     {
         path: "download-ticket",
-        component: DownloadTicketComponent
+        component: DownloadTicketComponent,
+        canActivate: [TicketAccessGuard]
     }
 ];
