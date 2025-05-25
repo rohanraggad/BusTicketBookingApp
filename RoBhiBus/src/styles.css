@@ -330,3 +330,25 @@ body {
     font-size: 15px;
   }
   
+
+  /* .login-modal {
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+    
+  } */
+  
+  .login-modal h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: bolder;
+  }
+  
+  .login-modal .form-control {
+    width: 80%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
