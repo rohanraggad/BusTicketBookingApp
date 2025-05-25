@@ -5,16 +5,16 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mb4">
             <h1 class="display-5 fw-bold text-white">Available Buses</h1>
-            <div class=" d-flex  gap-3">
+            <div class="d-flex gap" style="margin-left: auto;">
                 <button class="btn btn-primary">
                     <i class="fa fa-filter me-1"></i>Filter
+                    <select class="rounded" id="sort" name="sort" (change)="sortChange($event)">
+                        <option value="departure-asc">Departure: Earliest First</option>
+                        <option value="departure-desc">Departure: Late First</option>
+                        <option value="duration">Duration: Fastest Bus</option>
+                        <option value="price-asc">Price: Cheapest Bus First</option>
+                    </select>
                 </button>
-                <select class="ms-2" id="sort" name="sort" (change)="sortChange($event)">
-                    <option value="departure-asc">Departure: Earliest First</option>
-                    <option value="departure-desc">Departure: Late First</option>
-                    <option value="duration">Duration: Fastest Bus</option>
-                    <option value="price-asc">Price: Cheapest Bus First</option>
-                </select>
             </div>
         <p class="lead text-white mb-4">
             
